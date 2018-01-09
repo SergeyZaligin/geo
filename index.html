@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testHTML</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+</head>
+
+<style>
+
+ 
+</style>
+
+<script>
+	var citys = {
+		1: 'Санкт-Петербург и Ленинградская область'
+	}
+</script>
+
+<body>
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	    	setInterval(function(){
+ ymaps.ready(function() {
+	            var country = ymaps.geolocation.country;
+	            var city = ymaps.geolocation.region;
+	            if(citys['1'] == 'Санкт-Петербург и Ленинградская область'){
+	            	$('#country').html('Выша страна '+country);            
+	            	$('#city').html('Выша город '+city);
+	            }else{
+	            	alert('undefined city');
+	            }
+	            
+	        });
+	    	}, 3000);
+	       
+	    });
+	</script>
+
+	<!-- Для вывода страны -->
+	<div id="country"></div>
+
+	<!-- Для вывода города -->
+	<div id="city"></div>
+
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	        ymaps.ready(function() {
+	            if (ymaps.geolocation.country == 'Россия') {
+	                $('#info').html('Вы из России!');
+	            }
+	            else {
+	                $('#info').html('Вы не из России!');            
+	            }
+	        });
+	    });
+	</script>
+
+	<div id="info"></div>
+
+</body>
+</html>
