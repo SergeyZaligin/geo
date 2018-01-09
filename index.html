@@ -19,24 +19,7 @@
 </script>
 
 <body>
-	<script type="text/javascript">
-	    $(document).ready(function() {
-	    	setInterval(function(){
- ymaps.ready(function() {
-	            var country = ymaps.geolocation.country;
-	            var city = ymaps.geolocation.region;
-	            if(citys['1'] == 'Санкт-Петербург и Ленинградская область'){
-	            	$('#country').html('Выша страна '+country);            
-	            	$('#city').html('Выша город '+city);
-	            }else{
-	            	alert('undefined city');
-	            }
-	            
-	        });
-	    	}, 3000);
-	       
-	    });
-	</script>
+	
 
 	<!-- Для вывода страны -->
 	<div id="country"></div>
@@ -44,8 +27,14 @@
 	<!-- Для вывода города -->
 	<div id="city"></div>
 
-	<script type="text/javascript">
-	    $(document).ready(function() {
+	<div id="info"></div>
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
 	        ymaps.ready(function() {
 	            if (ymaps.geolocation.country == 'Россия') {
 	                $('#info').html('Вы из России!');
@@ -55,9 +44,23 @@
 	            }
 	        });
 	    });
+	
+	    $(document).ready(function() {
+	    	
+ ymaps.ready(function() {
+	            var country = ymaps.geolocation.country;
+	            var city = ymaps.geolocation.city;
+	            if(citys['1'] == 'Санкт-Петербург и Ленинградская область'){
+	            	$('#country').html('Выша страна '+country);            
+	            	$('#city').html('Выша город '+city);
+	            }else{
+	            	alert('undefined city');
+	            }
+	            
+	        });
+	   
+	       
+	    });
 	</script>
-
-	<div id="info"></div>
-
 </body>
 </html>
