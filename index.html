@@ -2,65 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>testHTML</title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+	<title>Document</title>
 </head>
-
-<style>
-
- 
-</style>
-
-<script>
-	var citys = {
-		1: 'Санкт-Петербург'
-	}
-</script>
-
 <body>
-	
-
-	<!-- Для вывода страны -->
-	<div id="country"></div>
-
-	<!-- Для вывода города -->
-	<div id="city"></div>
-
-	<div id="info"></div>
-
-
-
-
+	<script src="http://yastatic.net/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-$(document).ready(function() {
-	        ymaps.ready(function() {
-	            if (ymaps.geolocation.country == 'Россия') {
-	                $('#info').html('Вы из России!');
-	            }
-	            else {
-	                $('#info').html('Вы не из России!');            
-	            }
-	        });
-	    });
-
-	    $(document).ready(function() {
-	    	
- ymaps.ready(function() {
-	            var country = ymaps.geolocation.country;
-	            var city = ymaps.geolocation.city;
-	            if(citys['1'] == city){
-	            	$('#country').html('Выша страна '+country);            
-	            	$('#city').html('Выша город '+city);
-	            }else{
-	            	alert('undefined city');
-	            }
-	            
-	        });
-	   
-	       
-	    });
-	</script>
+  window.onload = function () {
+      jQuery("#user-city").text(ymaps.geolocation.city);
+      jQuery("#user-region").text(ymaps.geolocation.region);
+	  jQuery("#user-country").text(ymaps.geolocation.country);
+  }
+</script>
+<!-- <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script> -->
+<script src="yarugeo.js"></script>
+<div id="user-city"></div> <div id="user-region"></div> <div id="user-country"></div>
 </body>
 </html>
